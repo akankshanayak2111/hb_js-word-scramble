@@ -7,9 +7,31 @@
     <h1>A JavaScript Word Scramble Game</h1>
 
     <script>
-        var WORDS     = ["booger", "apple", "hackbright", "mango"];
-        var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman"];
+        var WORDS     = ["booger", "apple", "hackbright", "mango", "akanksha", "grace"];
+        // var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman"];
+        
+        function scramble_word(word) {
 
+            var letters = word.split("");
+            var currentIndex = letters.length;
+            var tempVal, randomIndex;
+
+            while (currentIndex > 0) {
+                randomIndex = Math.floor(Math.random() * word.length);
+                currentIndex--;
+
+                tempVal = letters[currentIndex];
+                letters[currentIndex] = letters[randomIndex];
+                letters[randomIndex] = tempVal;
+            }
+
+
+            return letters.join("");
+        
+        }
+
+        // ref: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+        
         var playing = true;
 
         while (playing) {
@@ -17,7 +39,8 @@
             // Grab a random word from the WORDS array.
             var i = Math.floor(Math.random() * WORDS.length);
             var word = WORDS[i];
-            var scrambled_word = SCRAMBLED[i];
+            // var scrambled_word = SCRAMBLED[i];
+            var scrambled_word = scramble_word(word);
             // alert(scrambled_word);
             var guess = prompt("Please unscramble this word:" + scrambled_word);
             if (guess.trim().toLowerCase() === word) {
