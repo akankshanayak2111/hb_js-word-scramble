@@ -31,7 +31,7 @@
         }
 
         // ref: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-        
+
         var playing = true;
 
         while (playing) {
@@ -42,14 +42,18 @@
             // var scrambled_word = SCRAMBLED[i];
             var scrambled_word = scramble_word(word);
             // alert(scrambled_word);
-            var guess = prompt("Please unscramble this word:" + scrambled_word);
-            if (guess.trim().toLowerCase() === word) {
-                alert("Congratulations! You guessed right!");
-            }
-            else {
-                alert("Sorry, you guessed wrong. The correct answer is " + word);
-            }
+            var guess = "";
+            while guess != word {
+                var guess = prompt("Please unscramble this word:" + scrambled_word);
+                if (guess.trim().toLowerCase() === word) {
+                    alert("Congratulations! You guessed right!");
+                    break;
+                }
+                else {
+                    alert("Sorry, you guessed wrong. Please try again.")
+                }
 
+            }
             // Grab the corresponding scrambled word from the SCRAMBLED array.
 
             // Prompt the user to guess the original word when given the scrambled word.
